@@ -1,0 +1,24 @@
+name: Pull Request Creator
+on:
+  push:
+    branches: ['test-branch']
+
+jobs:
+  pull-request:
+    environment: workflow_environment
+    name: Open PR to ${{ secrets.DESTINATION_BRANCH }}
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+      name: checkout
+
+    - uses: repo-sync/pull-request@v2
+      name: pull-request
+      with:
+        destination_branch: ${{ secrets.DESTINATION_BRANCH }}
+        pr_title: "Pulling ${{ github.ref }} into ${{ secrets.DESTINATION_BRANCH }}"
+        pr_body: "👑 *An automated PR*"
+        pr_reviewer: ${{ secrets.REVIEWERS }}
+        pr_draft: true
+        pr_label: "auto-pr"
+        github_token: ${{ secrets.GITHUB_TOKEN }}
