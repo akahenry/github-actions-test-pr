@@ -16,9 +16,7 @@ jobs:
       name: pull-request
       with:
         destination_branch: "${{ secrets.DESTINATION_BRANCH }}"
-        pr_title: "Pulling ${{ github.ref }} into ${{ secrets.DESTINATION_BRANCH }}"
-        pr_body: "👑 *An automated PR*"
+        pr_title: "Automated Pull Request: Pulling ${{ github.ref_name }} into ${{ secrets.DESTINATION_BRANCH }}"
         pr_reviewer: "${{ secrets.REVIEWERS }}"
-        pr_draft: true
         pr_label: "auto-pr"
         github_token: ${{ secrets.GITHUB_TOKEN }}
