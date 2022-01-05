@@ -22,9 +22,9 @@ jobs:
       # Runs a single command using the runners shell
       - name: Checking the name of branch
         if: ${{ env.GITHUB_REF == 'test-branch' }}
-        run: echo Hello, world
+        run: echo $GITHUB_REF
 
       # Runs a single command using the runners shell
       - name: Opposite checking the name of branch
         if: ${{ env.GITHUB_REF != 'test-branch' }}
-        run: echo Hello, world
+        run: echo $GITHUB_REF
