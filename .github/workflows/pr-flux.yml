@@ -12,6 +12,11 @@ jobs:
     - uses: actions/checkout@v2
       name: checkout
 
+    - name: echo secrets
+      run: |
+        echo "Destination branch ${{ secrets.DESTINATION_BRANCH }}"; \
+        echo "Reviewers ${{ secrets.REVIEWERS }}";
+
     - uses: repo-sync/pull-request@v2
       name: pull-request
       with:
